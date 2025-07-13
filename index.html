@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
+      <audio id="musicaDeFondo" preload="auto" autoplay loop>
+        <source src="idea22.mp3" type="audio/mpeg">
+    </audio>
     <meta charset="UTF-8">
     <title>Abrasos</title>
     <style> 
@@ -849,7 +852,7 @@
           
           elements.button.addEventListener('click', ()=> location.reload())
 
-          new Array(45).fill('').forEach(()=> addBunny())
+          new Array(5).fill('').forEach(()=> addBunny())
           new Array(100).fill('').forEach(()=> addTree())
           updateSadBunnyCount()
         }
