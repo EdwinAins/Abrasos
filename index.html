@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-      <audio id="musicaDeFondo" preload="auto" autoplay loop>
-        <source src="idea22.mp3" type="audio/mpeg">
-    </audio>
+      
     <meta charset="UTF-8">
     <title>Abrasos</title>
     <style> 
@@ -25,6 +23,21 @@
       }
 
       body {
+         <button onclick="PlayMusic()" class="enviar" id="botonMusica">🔊</button>
+    <div id="formulario">
+        <input type="text" id="mensaje" placeholder="Escribe tu deseo" maxlength="100">
+        <div style="display: flex; ">
+            <button onclick="enviarFarolillo()" class="enviar">Enviar Deseo</button>
+
+        </div>
+
+    </div>
+
+
+   
+    <audio id="musicaDeFondo" preload="auto" autoplay loop>
+        <source src="idea22.mp3" type="audio/mpeg">
+    </audio>
         background-color: #9edae9;
         font-family: Arial, Helvetica, sans-serif;
         overscroll-behavior: contain;
