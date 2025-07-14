@@ -1,10 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-      
-    <meta charset="UTF-8">
-    <title>Abrasos</title>
-    <style> 
+    <div class="corazon"></div>
+    <style > 
+ .corazon-superior {
+  position: fixed;
+  top: calc(10px + 1cm);
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 1cm;
+  height: 1cm;
+  background: red;
+  animation: latido 1s infinite;
+  z-index: 1000;
+}
+
+.corazon-superior::before,
+.corazon-superior::after {
+  content: "";
+  position: absolute;
+  width: 1cm;
+  height: 1cm;
+  background: red;
+  border-radius: 50%;
+}
+
+.corazon-superior::before {
+  top: -0.5cm;
+  left: 0;
+}
+
+.corazon-superior::after {
+  top: 0;
+  right: -0.5cm;
+}
+
+@keyframes latido {
+  0%, 100% {
+    transform: translateX(-50%) rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-45deg) scale(1.2);
+  }
+}
+
+.end-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  background: rgba(0,0,0,0.6);
+  padding: 30px 40px;
+  border-radius: 12px;
+  z-index: 999;
+}
+
+.end-message button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
       * {
         box-sizing: border-box;
         padding: 0;
@@ -23,21 +82,7 @@
       }
 
       body {
-         <button onclick="PlayMusic()" class="enviar" id="botonMusica">🔊</button>
-    <div id="formulario">
-        <input type="text" id="mensaje" placeholder="Escribe tu deseo" maxlength="100">
-        <div style="display: flex; ">
-            <button onclick="enviarFarolillo()" class="enviar">Enviar Deseo</button>
-
-        </div>
-
-    </div>
-
-
    
-    <audio id="musicaDeFondo" preload="auto" autoplay loop>
-        <source src="idea22.mp3" type="audio/mpeg">
-    </audio>
         background-color: #9edae9;
         font-family: Arial, Helvetica, sans-serif;
         overscroll-behavior: contain;
@@ -456,14 +501,14 @@
     </style>
   </head>
   <body>
+       
       <!-- partial:index.partial.html -->
       <div class="wrapper">
-        <div class="end-message d-none">
-          <p>
-            ¡Hurra! ¡Ya no hay conejitos tristes!
-          </p>
-          <button>Jugar de nuevo</button>
-        </div>
+<div class="end-message d-none" id="end">
+  <div class="corazon-superior"></div>
+  <p>¡Hurra! ¡Ya no hay conejitos tristes!</p>
+  <button onclick="reiniciarJuego()">Jugar de nuevo</button>
+</div>
         <div class="bunny-radar">
           <div class="circle"></div>
         </div>
@@ -483,6 +528,8 @@
         
       </div>
       <script> 
+        
+
           function init() {  
 
           const elements = {
@@ -865,13 +912,33 @@
           
           elements.button.addEventListener('click', ()=> location.reload())
 
-          new Array(5).fill('').forEach(()=> addBunny())
+          new Array(1).fill('').forEach(()=> addBunny())
           new Array(100).fill('').forEach(()=> addTree())
           updateSadBunnyCount()
         }
 
         window.addEventListener('DOMContentLoaded', init)
+        
       </script> 
+    
   
   </body>
+  
+  <body style="height:100vh; background: #82dada; color: #fff; display:flex; align-items:center; justify-content:center;">
+  
+  <audio id="miAudio" src="idea22.mp3"></audio>
+   
+  <script>
+   
+    const audio = document.getElementById('miAudio');
+     audio.volume = 0.06;
+
+    function reproducirAudio() {
+      audio.play();
+    }
+
+    document.body.addEventListener('click', reproducirAudio);
+    document.body.addEventListener('touchstart', reproducirAudio);
+  </script>
+</body>
 </html>
